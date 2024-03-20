@@ -1,16 +1,19 @@
-# This is a sample Python script.
+def popular_words(text, words):
+    # Розбиваємо текст на слова за пробілами та переводимо всі слова в нижній регістр
+    word_list = text.lower().split()
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+    # Ініціалізуємо словник для зберігання кількості зустрічей кожного слова
+    word_count = {}
+
+    # Перебираємо слова, які потрібно знайти
+    for word in words:
+        # Визначаємо кількість зустрічей слова у тексті та додаємо у словник
+        word_count[word] = word_list.count(word)
+
+    return word_count
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+# Тестуємо функцію
+assert popular_words('''When I was One I had just begun When I was Two I was nearly new ''',
+                     ['i', 'was', 'three', 'near']) == {'i': 4, 'was': 3, 'three': 0, 'near': 0}, 'Test1'
+print('OK')
